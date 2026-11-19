@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sora: 'Sora', sans-serif;
+    --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+    
+    /* VWS Signature Editorial & High-Energy Palette */
+    --vws-violet: #4E38FF;
+    --vws-orange: #FD562A;
+    --vws-lime: #D4FF00;
+    --vws-ink: #121113;
+    --vws-canvas: #FAF8F5;
+    --vws-card: #FFFFFF;
+    --vws-muted: #64748B;
+    --vws-border: rgba(18, 17, 19, 0.08);
+  }
+
+  body {
+    background-color: var(--vws-canvas);
+    color: var(--vws-ink);
+    font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    selection-background-color: #D4FF00;
+    selection-color: #121113;
+  }
+
+  /* Accessibility Focus Rings */
+  *:focus-visible {
+    outline: 2px solid var(--vws-violet);
+    outline-offset: 2px;
+  }
+
+  button, a {
+    touch-action: manipulation;
+  }
+}
+
+/* Editorial & Modern Typography */
+.font-display {
+  font-family: var(--font-sora), system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.font-body {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+}
+
+/* Boarding Pass Ticket Motif */
+.ticket-container {
+  background: #FFFFFF;
+  position: relative;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(18, 17, 19, 0.08);
+}
+
+.ticket-perforated {
+  position: relative;
+  border-top: 2px dashed rgba(18, 17, 19, 0.15);
+}
+
+.ticket-notch-left {
+  position: absolute;
+  left: -12px;
+  top: -12px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--vws-canvas);
+  border-radius: 50%;
+  box-shadow: inset -2px 0 3px rgba(0,0,0,0.05);
+}
+
+.ticket-notch-right {
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--vws-canvas);
+  border-radius: 50%;
+  box-shadow: inset 2px 0 3px rgba(0,0,0,0.05);
+}
+
+/* Tactile Polaroid Photo Card */
+.polaroid-card {
+  background: #FFFFFF;
+  padding: 0.75rem 0.75rem 2rem 0.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.polaroid-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(2px);
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Strikethrough promo price badge */
+.promo-strike {
+  position: relative;
+  display: inline-block;
+}
+
+.promo-strike::after {
+  content: '';
+  position: absolute;
+  left: -4%;
+  top: 50%;
+  width: 108%;
+  height: 2.5px;
+  background-color: #FD562A;
+  transform: rotate(-5deg);
+  border-radius: 2px;
+}
+
+/* Subtle Animated Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
