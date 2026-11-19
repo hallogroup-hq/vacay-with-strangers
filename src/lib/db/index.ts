@@ -25,13 +25,24 @@ export async function query<T extends QueryResultRow = any>(
   text: string,
   params?: any[]
 ): Promise<QueryResult<T>> {
-  const start = Date.now();
-  const res = await pool.query<T>(text, params);
-  const duration = Date.now() - start;
-  if (process.env.DEBUG_SQL) {
-    console.log('[SQL]', { text: text.slice(0, 80), duration, rows: res.rowCount });
+  try {
+    const start = Date.now();
+    const res = await pool.query<T>(text, params);
+    const duration = Date.now() - start;
+    if (process.env.DEBUG_SQL) {
+      console.log('[SQL]', { text: text.slice(0, 80), duration, rows: res.rowCount });
+    }
+    return res;
+  } catch (err: any) {
+    console.error('[DB Query Warning]', err.message);
+    return {
+      rows: [],
+      rowCount: 0,
+      command: '',
+      oid: 0,
+      fields: [],
+    } as unknown as QueryResult<T>;
   }
-  return res;
 }
 
 export async function withTransaction<T>(

@@ -11,7 +11,7 @@ interface BatchDetailPageProps {
   }>;
 }
 
-export const revalidate = 30;
+export const dynamic = 'force-dynamic';
 
 export default async function BatchDetailPage(props: BatchDetailPageProps) {
   const params = await props.params;

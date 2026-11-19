@@ -6,6 +6,8 @@ import { getPublicBatches, getPublicDestinations } from '@/lib/db/queries';
 import { formatIDR } from '@/lib/whatsapp/generator';
 import { CalendarBlank, MapPin, ArrowRight, Funnel, Users, Sparkle } from '@phosphor-icons/react/dist/ssr';
 
+export const dynamic = 'force-dynamic';
+
 interface TripsPageProps {
   searchParams: Promise<{
     country?: string;

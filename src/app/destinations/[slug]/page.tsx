@@ -28,7 +28,7 @@ function formatDateRange(d1: string | Date | undefined, d2: string | Date | unde
   return `${dt1.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })} – ${dt2.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}`;
 }
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function DestinationPage(props: DestinationPageProps) {
   const params = await props.params;

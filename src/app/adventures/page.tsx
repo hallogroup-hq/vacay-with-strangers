@@ -4,7 +4,7 @@ import PublicFooter from '@/components/public/Footer';
 import { getPublicAdventures } from '@/lib/db/queries';
 import { Sparkle, CalendarBlank, Quotes, MapPin } from '@phosphor-icons/react/dist/ssr';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
 
 export default async function AdventuresPage() {
   const stories = await getPublicAdventures();
